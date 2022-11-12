@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { EmbedBuilder, Client, GatewayIntentBits, Collection, Intents, RichEmbed, ActivityType, Activity, WebhookClient } = require('discord.js');
-const { token, webhookID, webhookToken, channelID, testID, testToken} = require('./config.json');
+const { token, webhookID, webhookToken, channelID} = require('./config.json');
 const { timeStamp } = require('console');
 
 const client = new Client({
@@ -12,8 +12,7 @@ const client = new Client({
     ],
 });
 
-const webhookClient = new WebhookClient({ id: testID, token: testToken});
-const webhookClients = new WebhookClient({ id: webhookID, token: webhookToken});
+const webhookClient = new WebhookClient({ id: webhookID, token: webhookToken});
 client.once('ready', () => {
 	console.log('Ready!');
 	client.user.setPresence({
@@ -57,7 +56,7 @@ client.on('messageCreate', (message) => {
                 .setTimestamp()
                 .setFooter({ text: 'OS Aco', iconUrl: 'https://i.pinimg.com/564x/cf/37/c7/cf37c7042c76f162fad963d9b0f99304.jpg'});
     
-            webhookClients.send({
+            webhookClient.send({
                 username: 'Profit Lounge Freebies',
                 avatarURL: 'https://i.pinimg.com/564x/cf/37/c7/cf37c7042c76f162fad963d9b0f99304.jpg',
                 embeds: [embed],
