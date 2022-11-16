@@ -32,9 +32,11 @@ client.on('messageCreate', (message) => {
         if (message.webhookId) {
             message.embeds.forEach((a) => {
                 fields = a.fields;
-                image = a.image;
+                image = a.image.url;
                 if(image == null) {
                     image = "https://i.pinimg.com/564x/cf/37/c7/cf37c7042c76f162fad963d9b0f99304.jpg";
+                } else {
+
                 }
                 desc = a.description;
                 asin = fields[0].value;
