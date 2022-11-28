@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { EmbedBuilder, Client, GatewayIntentBits, Collection, Intents, RichEmbed, ActivityType, Activity, WebhookClient } = require('discord.js');
 const { token, webhookID, webhookToken, channelID } = require('./config.json');
 const { timeStamp } = require('console');
@@ -38,17 +37,17 @@ client.on('messageCreate', (message) => {
           image = a.image.url;
         }
         desc = a.description;
-        asin = fields[0].value;
+        product = fields[0].value;
         original = fields[1].value;
         paid = fields[2].value;
         discount = fields[3].value;
       })
       const embed = new EmbedBuilder(timeStamp)
         .setTitle(':tada: Successful Freebie Checkout!')
-        .setDescription(`[${desc}](https://amazon.com/dp/${asin})`) //change to item name
+        .setDescription(desc) //change to item name
         .setImage(image)
         .addFields(
-          { name: 'ASIN', value: asin },
+          { name: 'Product', value: product },
           { name: 'Original Price', value: original, inline: true },
           { name: 'Price Paid', value: paid, inline: true },
           { name: 'Discount', value: discount, inline: true }
